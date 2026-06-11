@@ -18,22 +18,11 @@ android {
         versionCode = 42
         versionName = "1.0.1"
     }
-	signingConfigs {
-    	create("release") {
-        // Read keystore file path from environment variable or use default
-        val keystoreFile = System.getenv("KEYSTORE_FILE")
-        storeFile = file(keystoreFile)
-        
-        // Read signing credentials from environment variables
-        storePassword = System.getenv("KEYSTORE_PASSWORD")
-        keyAlias = System.getenv("KEY_ALIAS") 
-        keyPassword = System.getenv("KEY_PASSWORD") 
-    	}
+
 	}
     
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
