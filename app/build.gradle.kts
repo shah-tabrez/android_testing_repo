@@ -6,44 +6,50 @@ plugins {
     kotlin("android")
 }
 
-
 android {
     namespace = "org.opstree.app"
-    compileSdk = 35 // Update to your version
-    
+    compileSdk = 35
+
     defaultConfig {
         applicationId = "org.opstree.app"
-        minSdk = 32 // Update to your version
-        targetSdk = 35 // Update to your version
+        minSdk = 32
+        targetSdk = 35
         versionCode = 42
         versionName = "1.0.1"
     }
 
-	}
-    
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
+
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
     }
-    
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
         isCoreLibraryDesugaringEnabled = true
     }
-    
+
     kotlinOptions {
         jvmTarget = "17"
     }
 }
 
 dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
-    implementation("org.apache.commons:commons-text:1.11.0")
-    implementation(project(":utilities"))
+    coreLibraryDesugaring(
+        "com.android.tools:desugar_jdk_libs:2.0.4"
+    )
+
+    implementation(
+        "org.apache.commons:commons-text:1.11.0"
+    )
+
+    implementation(
+        project(":utilities")
+    )
 }
